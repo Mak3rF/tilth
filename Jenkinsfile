@@ -3,7 +3,12 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-              git branch: 'main', credentialsId: 'jenkins-github', url: 'https://github.com/mak3rf/tilth.git'
+	      if(env.BRANCH_NAME == 'dev'){
+	        git branch: 'main', credentialsId: 'jenkins-github', url: 'https://github.com/mak3rf/tilth.git'
+	      }
+	      else if(env.BRANCH_NAME == 'main'){
+	        git branch: 'dev', credentialsId: 'jenkins-github', url: 'https://github.com/mak3rf/tilth.git'
+	      }
             }
         }
         stage('Build') {
