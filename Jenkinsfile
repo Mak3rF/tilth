@@ -4,10 +4,10 @@ pipeline {
         stage('Clone Repo') {
             steps {
 	      if(env.BRANCH_NAME == 'dev'){
-	        git branch: 'main', credentialsId: 'jenkins-github', url: 'https://github.com/mak3rf/tilth.git'
+	        git branch: 'dev', credentialsId: 'jenkins-github', url: 'https://github.com/mak3rf/tilth.git'
 	      }
 	      else if(env.BRANCH_NAME == 'main'){
-	        git branch: 'dev', credentialsId: 'jenkins-github', url: 'https://github.com/mak3rf/tilth.git'
+	        git branch: 'main', credentialsId: 'jenkins-github', url: 'https://github.com/mak3rf/tilth.git'
 	      }
             }
         }
