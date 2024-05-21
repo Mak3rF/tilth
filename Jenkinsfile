@@ -15,8 +15,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying..'
-		sh 'sudo docker stop tilth-app-prod'
-		sh 'sudo docker run -d -p 8080:80 tilth-app-prod'
+		sh 'sudo rm -f tilth-prod || true'
+		sh 'sudo docker run -d -p 8080:80 --name tilth-prod tilth-app-prod'
             }
         }
     }
