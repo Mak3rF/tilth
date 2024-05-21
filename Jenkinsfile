@@ -5,9 +5,11 @@ pipeline {
             steps {
 	      script{
 	       if(env.BRANCH_NAME == 'dev'){
+		 sh 'rm -rf tilth_dev'
 	         git branch: 'dev', credentialsId: 'jenkins-github', url: 'https://github.com/mak3rf/tilth.git'
 	       }
 	       else if(env.BRANCH_NAME == 'main'){
+		 sh 'rm -rf tilth_prod'
 	         git branch: 'main', credentialsId: 'jenkins-github', url: 'https://github.com/mak3rf/tilth.git'
 	       }
 	      }
