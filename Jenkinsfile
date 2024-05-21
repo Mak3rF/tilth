@@ -3,9 +3,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                script {
-                 git branch: 'main' credentialsId: 'jenkins-github', url: 'https://github.com/mak3rf/tilth.git'
-		}
+              git branch: 'main' credentialsId: 'jenkins-github', url: 'https://github.com/mak3rf/tilth.git'
             }
         }
         stage('Test') {
