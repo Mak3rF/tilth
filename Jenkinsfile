@@ -5,6 +5,7 @@ pipeline {
             steps {
 	      script{
 	       if(env.BRANCH_NAME == 'dev'){
+		 sh 'ls'
 	         git branch: 'dev', credentialsId: 'jenkins-github', url: 'https://github.com/mak3rf/tilth.git'
 	       }
 	       else if(env.BRANCH_NAME == 'main'){
