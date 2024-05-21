@@ -6,14 +6,16 @@ pipeline {
               git branch: 'main', credentialsId: 'jenkins-github', url: 'https://github.com/mak3rf/tilth.git'
             }
         }
-        stage('Test') {
+        stage('Build') {
             steps {
-                echo 'Testing..'
+                echo 'Building..'
+		sh 'docker build . -t tilth-app-prod'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'Deploying..'
+		sh 'docker run -d -p 8080:80 tilth-app-prod'
             }
         }
     }
