@@ -1,20 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Clone Repo') {
-            steps {
-	      script{
-	       if(env.BRANCH_NAME == 'dev'){
-		 sh 'rm -rf tilth_dev && ls'
-	         git branch: 'dev', credentialsId: 'jenkins-github', url: 'https://github.com/mak3rf/tilth.git'
-	       }
-	       else if(env.BRANCH_NAME == 'main'){
-		 sh 'rm -rf tilth_prod && ls'
-	         git branch: 'main', credentialsId: 'jenkins-github', url: 'https://github.com/mak3rf/tilth.git'
-	       }
-	      }
-            }
-        }
         stage('Build') {
             steps {
 		script{
