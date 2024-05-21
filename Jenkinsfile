@@ -15,8 +15,15 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo 'Building..'
-		sh 'sudo docker build ~/jenkins-agent/jenkins-agent/workspace -t tilth-app-prod'
+		script{
+	         echo 'Building..'
+		 if(env.BRANCH_NAME='main'){
+		   sh 'sudo docker build ~/jenkins-agent/jenkins-agent/workspace -t tilth-app-prod'
+		 }
+		 else if(env.BRANCH_NAME = 'dev'){
+		   sh 'sudo docker build ~/jenkins-agent/jenkins-agent/workspace -t tilth-app-dev'
+		 }
+		}
             }
         }
         stage('Deploy') {
