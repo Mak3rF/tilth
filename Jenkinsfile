@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-		sh 'sudo docker build . -t tilth-app-prod'
+		sh 'sudo docker build ~/jenkins-agent/jenkins-agent/workspace -t tilth-app-prod'
             }
         }
         stage('Deploy') {
