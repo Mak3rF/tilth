@@ -13,10 +13,17 @@ pipeline {
             }
         }
         stage('Deploy') {
-            steps {
-                echo 'Deploying..'
-		sh 'sudo docker rm -f tilth-prod || true'
-		sh 'sudo docker run -d -p 8080:80 --name tilth-prod tilth-app-prod'
+             steps {
+		if(env.BRANCH_NAME == 'main'){
+                 echo 'Deploying Prod..'
+		 sh 'sudo docker rm -f tilth-prod || true'
+		 sh 'sudo docker run -d -p 8080:80 --name tilth-prod tilth-app-prod'
+	        }
+		else if (env.BRANCH_NAME == 'dev'){
+		 echo 'Deploying Dev..'
+		 sh 'sudo docker rm -f tilth-dev || true'
+		 sh 'sudo docker run -d -p 8081:80 --name tilth-dev tilth-app-dev'
+		}
             }
         }
     }
