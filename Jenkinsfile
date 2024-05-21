@@ -21,7 +21,7 @@ pipeline {
 		   sh 'sudo docker build ~/jenkins-agent/jenkins-agent/workspace -t tilth-app-prod'
 		 }
 		 else if(env.BRANCH_NAME == 'dev'){
-		   sh 'sudo docker build ~/jenkins-agent/jenkins-agent/workspace -t tilth-app-dev'
+		   sh 'sudo docker build ~/jenkins-agent/jenkins-agent/workspace/Dockerfile-dev -t tilth-app-dev'
 		 }
 		}
             }
