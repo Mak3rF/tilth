@@ -18,10 +18,10 @@ pipeline {
 		script{
 	         echo 'Building..'
 		 if(env.BRANCH_NAME == 'main'){
-		   sh 'sudo docker build -f ~/jenkins-agent/jenkins-agent/workspace/prod.Dockerfile . -t tilth-app-prod'
+		   sh 'sudo docker build . -t tilth-app-prod'
 		 }
 		 else if(env.BRANCH_NAME == 'dev'){
-		   sh 'sudo docker build -f ~/jenkins-agent/jenkins-agent/workspace/dev.Dockerfile . -t tilth-app-dev'
+		   sh 'sudo docker build . -t tilth-app-dev'
 		 }
 		}
             }
