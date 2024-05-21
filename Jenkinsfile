@@ -9,13 +9,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-		sh 'docker build . -t tilth-app-prod'
+		sh 'sudo docker build . -t tilth-app-prod'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying..'
-		sh 'docker run -d -p 8080:80 tilth-app-prod'
+		sh 'sudo docker run -d -p 8080:80 tilth-app-prod'
             }
         }
     }
